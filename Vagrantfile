@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
   # default shared folder
-  config.vm.synced_folder "data", "/vagrant_data"
+  config.vm.synced_folder "data", "C:\\Users\\vagrant\\data"
 
   config.vm.provider "virtualbox" do |vb|
      # Use either ssh (headless) or rdp (much better than virtualbox GUI)
@@ -21,4 +21,10 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision :shell, path: "provision/provision.cmd"
+  config.vm.provision "file",
+                      source: "provision/init.cmd",
+                      destination: "C:\\Users\\vagrant\\init.cmd"
+  config.vm.provision "file",
+                      source: "provision/.bashrc",
+                      destination: "C:\\Users\\vagrant\\.bashrc"
 end
