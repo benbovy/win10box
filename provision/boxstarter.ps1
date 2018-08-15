@@ -24,10 +24,12 @@ choco install miniconda3 --no-progress
 choco install VisualStudio2017Community --no-progress
 
 
-#--- PATH environment variable ---
+#--- Init script ---
 # like bashrc but for cmd (needs a "init.cmd" in user's directory)
+#
+# Issue with vagrant: provision (upload init.cmd) is after mounted folders -> mount error!
+# reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_EXPAND_SZ /d "%USERPROFILE%\init.cmd" /f
 # to remove: reg delete "HKCU\Software\Microsoft\Command Processor" /v AutoRun
-reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_EXPAND_SZ /d "%USERPROFILE%\init.cmd" /f
 
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---

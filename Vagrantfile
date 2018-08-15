@@ -20,11 +20,11 @@ Vagrant.configure("2") do |config|
   #   vb.memory = "1024"
   end
 
-  config.vm.provision :shell, path: "provision/provision.cmd"
   config.vm.provision "file",
                       source: "provision/init.cmd",
                       destination: "C:\\Users\\vagrant\\init.cmd"
   config.vm.provision "file",
                       source: "provision/.bashrc",
                       destination: "C:\\Users\\vagrant\\.bashrc"
+  config.vm.provision :shell, path: "provision/provision.cmd"
 end
