@@ -21,10 +21,13 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "file",
-                      source: "provision/init.cmd",
-                      destination: "C:\\Users\\vagrant\\init.cmd"
+                      source: "provision/init_vs2017_64.bat",
+                      destination: "/Users/vagrant/init_vs2017_64.bat"
+  config.vm.provision "file",
+                      source: "provision/init_conda.bat",
+                      destination: "/Users/vagrant/init_conda.bat"
   config.vm.provision "file",
                       source: "provision/.bashrc",
-                      destination: "C:\\Users\\vagrant\\.bashrc"
+                      destination: "/Users/vagrant/.bashrc"
   config.vm.provision :shell, path: "provision/provision.cmd"
 end
